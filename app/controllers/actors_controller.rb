@@ -7,8 +7,8 @@ class ActorsController < ApplicationController
   def actor_details
     the_id = params.fetch("an_id")
     @the_actor = Actor.where({ :id => the_id }).at(0)
-    @filmography = Movie.where({ :director_id => @the_actor.id })
-    # @character = Character.where({ :actor_id => @the_actor.id})
+    # @filmography = Character.where({ :director_id => @the_actor.id })
+    @character = Character.where({:actor_id => @the_actor.id })
     render({ :template => "actor_templates/show.html.erb"})
   end  
 end
